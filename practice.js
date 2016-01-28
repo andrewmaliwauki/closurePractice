@@ -9,11 +9,11 @@ var outer = function(){
 //Above you're given a function that returns another function which has a closure over the name variable.
 //Invoke outer saving the return value into another variable called 'inner'.
 
-  //Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
-  //Code Here
+inner();
 
 
 
@@ -32,7 +32,8 @@ var callFriend = function(){
 //Above you're given a callFriend function that returns another function.
 //Do what you need to do in order to call your function and get 'Calling Jake at 435-215-9248' in your console.
 
-  //Code Here
+var hello = callFriend();
+hello('435-215-9248');
 
 
 
@@ -44,7 +45,14 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+function makeCounter() {
+  var counter = 0;
+  return function() {
+    counter++;
+    return counter;
+  }
+}
+
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -64,6 +72,22 @@ var callFriend = function(){
   After the function has been called N number of times, console.log('STAHHP');
 */
 
+function one(two, N) {
+  return function three() {
+    if (N > 1) {
+      console.log('STAHHP');
+    }
+    else {
+      N++;
+      two();
+    }
+  }
+}
 
+function hello() {
+  console.log('Have you ever danced with the devil in the pale moon light?');
+}
 
+var result = one(hello, 1)
 
+result();
